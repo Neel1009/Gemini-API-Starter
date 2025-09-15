@@ -1,92 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:background="#F9FAFB">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/promptEditTextLayout"
-        style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+    <!-- Top Info Section -->
+    <LinearLayout
+        android:id="@+id/topInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="top|start"
-        android:hint="@string/enter_your_prompt_here"
-        android:inputType="textMultiLine"
-        android:minLines="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sendButton"
-        app:layout_constraintStart_toStartOf="parent">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#006875"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/promptEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Neel Vora"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/sendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="8dp"
-        android:background="@color/black"
-        android:padding="8dp"
-        android:src="@drawable/baseline_send_24"
-        android:text="Send"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/promptEditTextLayout" />
+        <TextView
+            android:id="@+id/rollTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Roll No: C108"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+    </LinearLayout>
 
+    <!-- Messages Container -->
     <ScrollView
         android:id="@+id/scrollText"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:nestedScrollingEnabled="true"
-        app:layout_constraintBottom_toTopOf="@+id/promptEditTextLayout"
+        android:padding="16dp"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/topInfo"
+        app:layout_constraintBottom_toTopOf="@+id/inputContainer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/messagesContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/twotone_computer_24" />
-
-            <TextView
-                android:id="@+id/displayTextView"
-                android:layout_width="match_parent"
+            <!-- Bot Message -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="waiting..."
-                android:textSize="18sp" />
+                android:layout_marginBottom="12dp"
+                android:layout_gravity="start"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp"
+                android:backgroundTint="#E9ECEF">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/sym_def_app_icon"
+                        android:tint="#006875" />
+
+                    <TextView
+                        android:id="@+id/displayTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="Hello! I’m the bot."
+                        android:textColor="#202124"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- User Message -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_gravity="end"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp"
+                android:backgroundTint="#006875">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/Message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="2dp"
+                        android:text="This is a user message."
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>
 
+    <!-- Input Container -->
+    <LinearLayout
+        android:id="@+id/inputContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Input Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/promptEditTextLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Message"
+            app:boxCornerRadiusTopStart="24dp"
+            app:boxCornerRadiusTopEnd="24dp"
+            app:boxCornerRadiusBottomStart="24dp"
+            app:boxCornerRadiusBottomEnd="24dp"
+            app:boxBackgroundColor="#F1F3F4">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/promptEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="1"
+                android:maxLines="5"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Speech Button -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/speechButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Speak"
+            android:src="@android:drawable/ic_btn_speak_now"
+            app:tint="#FFFFFF"
+            app:backgroundTint="#4CAF50"
+            app:useCompatPadding="true" />
+
+        <!-- Send Button -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Send"
+            android:src="@android:drawable/ic_menu_send"
+            app:tint="#FFFFFF"
+            app:backgroundTint="#006875"
+            app:useCompatPadding="true" />
+    </LinearLayout>
+
+    <!-- Progress Loader -->
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
