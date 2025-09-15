@@ -2,7 +2,7 @@ import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
 
-// Function to read properties from local.properties fileee
+// Function to read properties from local.properties
 fun gradleLocalProperties(projectRootDir: File, providers: org.gradle.api.provider.ProviderFactory): Properties {
     val props = Properties()
     val localPropertiesFile = File(projectRootDir, "local.properties")

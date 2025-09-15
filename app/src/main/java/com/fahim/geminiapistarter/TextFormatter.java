@@ -19,7 +19,7 @@ public class TextFormatter {
 
         SpannableString spannableString = new SpannableString(text);
 
-        // Pattern to find text enclosed in **
+        // Pattern to find text enclosed innn **
         Pattern boldPattern = Pattern.compile("\\*\\*(.*?)\\*\\*");
         Matcher boldMatcher = boldPattern.matcher(spannableString);
 

@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView userMessageText;
     private ImageButton micButton;
 
-    // Launcher for speech recognition
+
+    // Launcher for speech recognitionnn
+
     private final ActivityResultLauncher<Intent> speechRecognizerLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
