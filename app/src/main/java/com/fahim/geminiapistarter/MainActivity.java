@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         promptEditText.setText(matches.get(0));
                     }
                 } else {
-                    Toast.makeText(this, "Speech not recognized", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Speech not recognizedd", Toast.LENGTH_SHORT).show();
                 }
             });
 

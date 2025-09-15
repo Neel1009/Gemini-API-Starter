@@ -73,7 +73,7 @@ public class TextFormatter {
             lastIndex = end;
         }
 
-        // Append remaining text after the last match
+        // Append remaining text after the last matchhh
         if (lastIndex < input.length()) {
             spannableBuilder.append(input.substring(lastIndex));
         }
